@@ -101,7 +101,7 @@
               <strong>Terimakasih!</strong> Cek Email Anda, Sertifikat Sudah Kami Kirimkan.
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            <form name="cdcc-form-alumni">
+            <form name="form-sertifikat-fpm">
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" aria-describedby="Email" name="email" required/>
@@ -167,19 +167,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
     <script>
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbwD3j9XirfJK8OFKzrd66rOWPE673fmTvD7tR7RTZNdAf4VJ_ov9p-Npd70bTUCENQZOw/exec'
-      const form = document.forms['cdcc-form-alumni']
-      const btnKirim = document.querySelector('.btn-kirim')
-      const btnLoading = document.querySelector('.btn-loading')
-      const myAlert = document.querySelector('.my-alert')
-      const setelahLulus = document.querySelector('setelahLulus')
-      const melamarKerja = document.querySelector('no-1')
-      const kuliahKeJenjangPendidikanYangLebihTinggi = document.querySelector('no-2')
-      const masukKerjaKarenaSayaSudahMemperolehPekerjaan = document.querySelector('no-3')
-      const MelanjutkanBerwirausaha = document.querySelector('no-4')
-      const jikaKuliahLagi = document.querySelector('jikaKuliahLagi')
-      const jikaCatauDSebutkanCakupanPekerjaan = document.querySelector('jikaCatauDSebutkanCakupanPekerjaan')
-      const jikaMasukKerjaSebutkanPerusahaanYangMenerima = document.querySelector('jikaMasukKerjaSebutkanPerusahaanYangMenerima')
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzdMx0tJgo1CsiCuRI12AciKcsgqDZDUQSVLakd8vsBRSzBts6zJQ9yFZYochLZV0ai/exec'
+      const form = document.forms['form-sertifikat-fpm']
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => console.log('Success!', response))
+          .catch(error => console.error('Error!', error.message))
+      })
 
 
       form.addEventListener('submit', e => {
